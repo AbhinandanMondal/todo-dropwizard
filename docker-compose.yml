@@ -1,0 +1,21 @@
+version: '3.1'
+
+services:
+
+  db:
+    image: mariadb
+    restart: always
+    environment:
+      MARIADB_ROOT_PASSWORD: example
+    ports:
+      - "3306:3307"
+
+
+
+  dropwizard-api:
+    image: todoapp-image:11.0
+    restart: always
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
